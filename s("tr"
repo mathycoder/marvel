@@ -1,0 +1,55 @@
+=> [1;34m#(Element:0x16c5614 {[0m
+  name = [31m[1;31m"[0m[31mtr[1;31m"[0m[31m[0m,
+  children = [
+    [1;34m#(Text [0m[31m[1;31m"[0m[31m[1;35m\n[0m[31m[1;31m"[0m[31m[0m),
+    [1;34m#(Element:0x1bf7380 {[0m
+      name = [31m[1;31m"[0m[31mth[1;31m"[0m[31m[0m,
+      attributes = [ [1;34m#(Attr:0x1bf650c {[0m name = [31m[1;31m"[0m[31mscope[1;31m"[0m[31m[0m, value = [31m[1;31m"[0m[31mcol[1;31m"[0m[31m[0m })],
+      children = [
+        [1;34m#(Text [0m[31m[1;31m"[0m[31mFilm[1;31m"[0m[31m[0m),
+        [1;34m#(Element:0x1bfef68 {[0m
+          name = [31m[1;31m"[0m[31msup[1;31m"[0m[31m[0m,
+          attributes = [
+            [1;34m#(Attr:0x1bfe66c {[0m
+              name = [31m[1;31m"[0m[31mid[1;31m"[0m[31m[0m,
+              value = [31m[1;31m"[0m[31mcite_ref-MCUTimeline_4-0[1;31m"[0m[31m[0m
+              }),
+            [1;34m#(Attr:0x1bfe658 {[0m name = [31m[1;31m"[0m[31mclass[1;31m"[0m[31m[0m, value = [31m[1;31m"[0m[31mreference[1;31m"[0m[31m[0m })],
+          children = [
+            [1;34m#(Element:0x1c0b4d4 {[0m
+              name = [31m[1;31m"[0m[31ma[1;31m"[0m[31m[0m,
+              attributes = [
+                [1;34m#(Attr:0x1c0ae44 {[0m
+                  name = [31m[1;31m"[0m[31mhref[1;31m"[0m[31m[0m,
+                  value = [31m[1;31m"[0m[31m#cite_note-MCUTimeline-4[1;31m"[0m[31m[0m
+                  })],
+              children = [ [1;34m#(Text [0m[31m[1;31m"[0m[31m[4][1;31m"[0m[31m[0m)]
+              })]
+          }),
+        [1;34m#(Text [0m[31m[1;31m"[0m[31m[1;35m\n[0m[31m[1;31m"[0m[31m[0m)]
+      }),
+    [1;34m#(Text [0m[31m[1;31m"[0m[31m[1;35m\n[0m[31m[1;31m"[0m[31m[0m),
+    [1;34m#(Element:0x1c17b6c {[0m
+      name = [31m[1;31m"[0m[31mth[1;31m"[0m[31m[0m,
+      attributes = [ [1;34m#(Attr:0x1c17248 {[0m name = [31m[1;31m"[0m[31mscope[1;31m"[0m[31m[0m, value = [31m[1;31m"[0m[31mcol[1;31m"[0m[31m[0m })],
+      children = [ [1;34m#(Text [0m[31m[1;31m"[0m[31mU.S. release date[1;35m\n[0m[31m[1;31m"[0m[31m[0m)]
+      }),
+    [1;34m#(Text [0m[31m[1;31m"[0m[31m[1;35m\n[0m[31m[1;31m"[0m[31m[0m),
+    [1;34m#(Element:0x1c1f934 {[0m
+      name = [31m[1;31m"[0m[31mth[1;31m"[0m[31m[0m,
+      attributes = [ [1;34m#(Attr:0x1c1f010 {[0m name = [31m[1;31m"[0m[31mscope[1;31m"[0m[31m[0m, value = [31m[1;31m"[0m[31mcol[1;31m"[0m[31m[0m })],
+      children = [ [1;34m#(Text [0m[31m[1;31m"[0m[31mDirector[1;35m\n[0m[31m[1;31m"[0m[31m[0m)]
+      }),
+    [1;34m#(Text [0m[31m[1;31m"[0m[31m[1;35m\n[0m[31m[1;31m"[0m[31m[0m),
+    [1;34m#(Element:0x1c276e8 {[0m
+      name = [31m[1;31m"[0m[31mth[1;31m"[0m[31m[0m,
+      attributes = [ [1;34m#(Attr:0x1c26dc4 {[0m name = [31m[1;31m"[0m[31mscope[1;31m"[0m[31m[0m, value = [31m[1;31m"[0m[31mcol[1;31m"[0m[31m[0m })],
+      children = [ [1;34m#(Text [0m[31m[1;31m"[0m[31mScreenwriter(s)[1;35m\n[0m[31m[1;31m"[0m[31m[0m)]
+      }),
+    [1;34m#(Text [0m[31m[1;31m"[0m[31m[1;35m\n[0m[31m[1;31m"[0m[31m[0m),
+    [1;34m#(Element:0x1c2f4b0 {[0m
+      name = [31m[1;31m"[0m[31mth[1;31m"[0m[31m[0m,
+      attributes = [ [1;34m#(Attr:0x1c2eb8c {[0m name = [31m[1;31m"[0m[31mscope[1;31m"[0m[31m[0m, value = [31m[1;31m"[0m[31mcol[1;31m"[0m[31m[0m })],
+      children = [ [1;34m#(Text [0m[31m[1;31m"[0m[31mProducer(s)[1;35m\n[0m[31m[1;31m"[0m[31m[0m)]
+      })]
+  })

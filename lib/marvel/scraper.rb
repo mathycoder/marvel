@@ -30,10 +30,16 @@ class Scraper
     # table[1].css("th").text
     # this seems to get the titles in the first row...
     
-    film_array = []
+    string_array = [] 
     
     table_array[0].css("tr").each do |row|
-      array = row.text.split("\n")
+      string_array << row.text
+    end 
+    
+    film_array = []  
+      
+    string_array.each do |row| 
+      array = row.split("\n")
       film_array << {
         :film => array[1],
         :date => array[3],
@@ -41,10 +47,9 @@ class Scraper
         :screenwriter => array[7],
         :producers => array[9]
       }
-      binding.pry   
     end 
-      
   end 
-  
+  binding.pry 
+  film_array 
   
 end 
