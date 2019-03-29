@@ -4,6 +4,7 @@
 class CLI 
   
   def run 
+    scrape_phase_movies
     logo 
     welcome
     phase_menu 
@@ -68,7 +69,6 @@ class CLI
   end 
   
   def phase1 
-    scrape_phase_movies
     puts ""
     puts " ------------------ Phase 1 -----------------"
     

@@ -20,17 +20,18 @@ class Scraper
       table_array << tbody 
     end 
     
-    #table_array[0] = Phase 1 table 
-    #table_array[1] = Phase 2 table 
-    #table_array[2] = Phase 3 table 
-    
-    #Scraping the Phase 1 Table 
+    #Each index gets to a different phase's table
 
-    string_array = [] 
-    
-    table_array[0].css("tr").each do |row|
-      string_array << row.text
+    string_array = []
+    for i in [0,1,2] do 
+      temp_string_array = [] 
+      table_array[i].css("tr").each do |row|
+        temp_string_array << row.text
+      end 
+      temp_string_array.shift()
+      string_array << temp_string_array
     end 
+    string_array = string_array.flatten 
     
     film_array = []  
       
