@@ -1,6 +1,4 @@
-require "marvel/version"
+#This is the gem's environment file 
 
-module Marvel
-  class Error < StandardError; end
-  # Your code goes here...
-end
+require_relative "marvel/version"
+
