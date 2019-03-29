@@ -1,5 +1,8 @@
+require 'pry'
+
 # Run this in IRB to test things out 
 # require_relative './lib/marvel.rb'
+# Scraper.new.initial_scrape
 
 class Scraper 
   attr_accessor :path 
@@ -9,7 +12,19 @@ class Scraper
   end 
   
   def initial_scrape
+    html = open(@path)
+    doc = Nokogiri::HTML(html)
+    tables = doc.css(".wikitable.plainrowheaders tbody")
+    table_array = []
+    tables.each do |tbody|
+      table_array << tbody 
+    end 
+    
+    #table_array[0] = Phase 1 table 
+    #table_array[1] = Phase 2 table 
+    #table_array[2] = Phase 3 table 
+    
+    binding.pry 
     
   end 
-  
 end 
