@@ -73,18 +73,11 @@ class CLI
     puts " ------------------ Phase 1 -----------------"
     
     Movie.all.each_with_index do |movie, index|
-      binding.pry 
-      puts "#{index + 1}"
+      puts "#{index + 1}. #{movie.film} - #{movie.date}"
     end 
-    
-    # puts "1. Iron Man - May 2, 2008"
-    # puts "2. The Incredible Hulk - June 13, 2008"
-    # puts "3. Iron Man 2 - May 7, 2010"
-    # puts "4. Thor - May 6, 2011"
-    # puts "5. Captain America: The First Avenger - July 22, 2011"
-    # puts "6. Marvel's The Avengers - May 4, 2012"
-    # puts "Select a film number:"
-    # input = gets.strip.downcase 
+  
+    puts "Select a film number:"
+    input = gets.strip.downcase 
   end 
   
   def scrape_phase_movies
