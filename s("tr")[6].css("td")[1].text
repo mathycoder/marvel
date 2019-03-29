@@ -1,0 +1,32 @@
+=> [1;34m#(Element:0x1fe8188 {[0m
+  name = [31m[1;31m"[0m[31mtd[1;31m"[0m[31m[0m,
+  attributes = [ [1;34m#(Attr:0x1fe8124 {[0m name = [31m[1;31m"[0m[31mcolspan[1;31m"[0m[31m[0m, value = [31m[1;31m"[0m[31m2[1;31m"[0m[31m[0m })],
+  children = [
+    [1;34m#(Element:0x1fedd2c {[0m
+      name = [31m[1;31m"[0m[31ma[1;31m"[0m[31m[0m,
+      attributes = [
+        [1;34m#(Attr:0x1fedcc8 {[0m name = [31m[1;31m"[0m[31mhref[1;31m"[0m[31m[0m, value = [31m[1;31m"[0m[31m/wiki/Joss_Whedon[1;31m"[0m[31m[0m }),
+        [1;34m#(Attr:0x1fedcb4 {[0m name = [31m[1;31m"[0m[31mtitle[1;31m"[0m[31m[0m, value = [31m[1;31m"[0m[31mJoss Whedon[1;31m"[0m[31m[0m })],
+      children = [ [1;34m#(Text [0m[31m[1;31m"[0m[31mJoss Whedon[1;31m"[0m[31m[0m)]
+      }),
+    [1;34m#(Element:0x1fed50c {[0m
+      name = [31m[1;31m"[0m[31msup[1;31m"[0m[31m[0m,
+      attributes = [
+        [1;34m#(Attr:0x1fed4a8 {[0m
+          name = [31m[1;31m"[0m[31mid[1;31m"[0m[31m[0m,
+          value = [31m[1;31m"[0m[31mcite_ref-WhedonAvengers_15-0[1;31m"[0m[31m[0m
+          }),
+        [1;34m#(Attr:0x1fed494 {[0m name = [31m[1;31m"[0m[31mclass[1;31m"[0m[31m[0m, value = [31m[1;31m"[0m[31mreference[1;31m"[0m[31m[0m })],
+      children = [
+        [1;34m#(Element:0x1fecea4 {[0m
+          name = [31m[1;31m"[0m[31ma[1;31m"[0m[31m[0m,
+          attributes = [
+            [1;34m#(Attr:0x1fece40 {[0m
+              name = [31m[1;31m"[0m[31mhref[1;31m"[0m[31m[0m,
+              value = [31m[1;31m"[0m[31m#cite_note-WhedonAvengers-15[1;31m"[0m[31m[0m
+              })],
+          children = [ [1;34m#(Text [0m[31m[1;31m"[0m[31m[15][1;31m"[0m[31m[0m)]
+          })]
+      }),
+    [1;34m#(Text [0m[31m[1;31m"[0m[31m[1;35m\n[0m[31m[1;31m"[0m[31m[0m)]
+  })

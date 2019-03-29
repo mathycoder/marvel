@@ -25,14 +25,25 @@ class Scraper
     #table_array[2] = Phase 3 table 
     
     #Scraping the Phase 1 Table 
-    table = table_array[0].css("tr")
-    table.each do |movie_row|
-      table_columns = movie_row.css("th")
-      table_columns.each do |movie_col|
-        binding.pry 
-        
-      end 
+    
+    # table.each do |movie_row|
+    # table[1].css("th").text
+    # this seems to get the titles in the first row...
+    
+    film_array = []
+    
+    table_array[0].css("tr").each do |row|
+      array = row.text.split("\n")
+      film_array << {
+        :film => array[1],
+        :date => array[3],
+        :director => array[5],
+        :screenwriter => array[7],
+        :producers => array[9]
+      }
+      binding.pry   
     end 
+      
   end 
   
   
