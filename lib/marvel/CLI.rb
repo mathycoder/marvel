@@ -73,15 +73,20 @@ class CLI
     puts " ------------------ Phase #{num} -----------------"
     
     if num == 1 
-      movie_range = Movie.all[0..6]
+      a = 0 
+      b = 4 
     elsif num == 2 
-      movie_range = Movie.all[7..13]
+      a = 5
+      b = 10 
     elsif num == 3 
-      movie_range = Movie.all[14..19]
+      a = 11
+      b = 19
     end 
       
-    movie_range.each_with_index do |movie, index|
-      puts "#{index + 1}. #{movie.film} - #{movie.date}"
+    Movie.all.each_with_index do |movie, index|
+      if index >=a && index <=b 
+        puts "#{index + 1}. #{movie.film} - #{movie.date}"
+      end 
     end 
   
     puts "Select a film number:"
