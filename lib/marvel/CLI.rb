@@ -85,7 +85,7 @@ class CLI
         puts "#{index + 1}. #{movie.film} - #{movie.date}"
       end 
     end 
-  
+    puts " --------------------------------------------"
     puts "Select a film number:"
     input = gets.strip.downcase
     puts Movie.all[input.to_i-1].film 

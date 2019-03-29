@@ -39,7 +39,7 @@ class Scraper
       array = row.split("\n")
       film_array << {
         :film => array[1],
-        :date => array[3],
+        :date => array[3].split("(")[0],
         :director => array[5],
         :screenwriter => array[7],
         :producer => array[9]
