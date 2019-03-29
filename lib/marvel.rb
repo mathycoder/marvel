@@ -1,6 +1,7 @@
 #This is the gem's environment file 
 
-
+require 'bundler/setup'
+Bundler.require(:default)
 
 require 'open-uri'
 require 'nokogiri'
