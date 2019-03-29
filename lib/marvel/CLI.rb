@@ -54,7 +54,7 @@ class CLI
       puts "Select a Phase or type 'exit':"
       input = gets.strip.downcase 
       case input 
-      when "1" || "phase 1"
+      when "1" || "phase 1" || "2" || "phase 2" || "3" || "phase 3"
         phase(1) 
       when "2" || "phase 2"
         phase(2)
@@ -73,14 +73,11 @@ class CLI
     puts " ------------------ Phase #{num} -----------------"
     
     if num == 1 
-      a = 0 
-      b = 4 
+      a,b = 0,4 
     elsif num == 2 
-      a = 5
-      b = 10 
+      a,b = 5,10
     elsif num == 3 
-      a = 11
-      b = 19
+      a,b = 11,19
     end 
       
     Movie.all.each_with_index do |movie, index|
@@ -90,7 +87,8 @@ class CLI
     end 
   
     puts "Select a film number:"
-    input = gets.strip.downcase 
+    input = gets.strip.downcase
+    puts Movie.all[input.to_i-1].film 
   end 
   
   def scrape_phase_movies
