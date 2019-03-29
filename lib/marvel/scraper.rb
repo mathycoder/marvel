@@ -25,11 +25,7 @@ class Scraper
     #table_array[2] = Phase 3 table 
     
     #Scraping the Phase 1 Table 
-    
-    # table.each do |movie_row|
-    # table[1].css("th").text
-    # this seems to get the titles in the first row...
-    
+
     string_array = [] 
     
     table_array[0].css("tr").each do |row|
@@ -48,8 +44,7 @@ class Scraper
         :producers => array[9]
       }
     end 
+    film_array.shift() 
+    film_array
   end 
-  binding.pry 
-  film_array 
-  
 end 
