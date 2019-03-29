@@ -24,7 +24,16 @@ class Scraper
     #table_array[1] = Phase 2 table 
     #table_array[2] = Phase 3 table 
     
-    binding.pry 
-    
+    #Scraping the Phase 1 Table 
+    table = table_array[0].css("tr")
+    table.each do |movie_row|
+      table_columns = movie_row.css("th")
+      table_columns.each do |movie_col|
+        binding.pry 
+        
+      end 
+    end 
   end 
+  
+  
 end 
