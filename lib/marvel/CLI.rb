@@ -55,11 +55,11 @@ class CLI
       input = gets.strip.downcase 
       case input 
       when "1" || "phase 1"
-        phase1 
+        phase(1) 
       when "2" || "phase 2"
-        puts "More info on Phase 2"
+        phase(2)
       when "3" || "phase 3"
-        puts "More info on Phase 3"
+        phase(3)
       when "exit"
         goodbye 
       else 
@@ -68,11 +68,19 @@ class CLI
     end 
   end 
   
-  def phase1 
+  def phase(num) 
     puts ""
-    puts " ------------------ Phase 1 -----------------"
+    puts " ------------------ Phase #{num} -----------------"
     
-    Movie.all.each_with_index do |movie, index|
+    if num == 1 
+      movie_range = Movie.all[0..6]
+    elsif num == 2 
+      movie_range = Movie.all[7..13]
+    elsif num == 3 
+      movie_range = Movie.all[14..19]
+    end 
+      
+    movie_range.each_with_index do |movie, index|
       puts "#{index + 1}. #{movie.film} - #{movie.date}"
     end 
   
