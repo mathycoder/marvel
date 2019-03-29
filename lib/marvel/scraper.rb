@@ -2,7 +2,7 @@ require 'pry'
 
 # Run this in IRB to test things out 
 # require_relative './lib/marvel.rb'
-# Scraper.new.initial_scrape
+# Scraper.new.scrape_index_page
 
 class Scraper 
   attr_accessor :path 
@@ -11,7 +11,7 @@ class Scraper
     @path = path 
   end 
   
-  def initial_scrape
+  def scrape_index_page
     html = open(@path)
     doc = Nokogiri::HTML(html)
     tables = doc.css(".wikitable.plainrowheaders tbody")
@@ -41,7 +41,7 @@ class Scraper
         :date => array[3],
         :director => array[5],
         :screenwriter => array[7],
-        :producers => array[9]
+        :producer => array[9]
       }
     end 
     film_array.shift() 

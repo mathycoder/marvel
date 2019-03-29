@@ -9,5 +9,6 @@ require 'nokogiri'
 require_relative "marvel/version"
 require_relative "marvel/scraper"
 require_relative "marvel/CLI"
+require_relative "marvel/movie"
 
 

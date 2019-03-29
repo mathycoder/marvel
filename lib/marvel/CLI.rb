@@ -1,3 +1,6 @@
+# require_relative './lib/marvel.rb'
+# CLI.new.phase1
+
 class CLI 
   
   def run 
@@ -65,16 +68,28 @@ class CLI
   end 
   
   def phase1 
+    scrape_phase_movies
     puts ""
     puts " ------------------ Phase 1 -----------------"
-    puts "1. Iron Man - May 2, 2008"
-    puts "2. The Incredible Hulk - June 13, 2008"
-    puts "3. Iron Man 2 - May 7, 2010"
-    puts "4. Thor - May 6, 2011"
-    puts "5. Captain America: The First Avenger - July 22, 2011"
-    puts "6. Marvel's The Avengers - May 4, 2012"
-    puts "Select a film number:"
-    input = gets.strip.downcase 
+    
+    Movie.all.each_with_index do |movie, index|
+      binding.pry 
+      puts "#{index + 1}"
+    end 
+    
+    # puts "1. Iron Man - May 2, 2008"
+    # puts "2. The Incredible Hulk - June 13, 2008"
+    # puts "3. Iron Man 2 - May 7, 2010"
+    # puts "4. Thor - May 6, 2011"
+    # puts "5. Captain America: The First Avenger - July 22, 2011"
+    # puts "6. Marvel's The Avengers - May 4, 2012"
+    # puts "Select a film number:"
+    # input = gets.strip.downcase 
+  end 
+  
+  def scrape_phase_movies
+    movie_hash = Scraper.new.scrape_index_page
+    Movie.new_from_collection(movie_hash)
   end 
   
 end 
