@@ -86,9 +86,15 @@ class CLI
       end 
     end 
     puts " --------------------------------------------"
-    puts "Select a film number:"
+    puts "Select a film number or type 'back':"
     input = gets.strip.downcase
-    puts Movie.all[input.to_i-1].film 
+    if input != 'back'
+      film_details(input.to_i)
+    end 
+  end 
+  
+  def film_details(film_number)
+    puts Movie.all[film_number.to_i-1].film 
   end 
   
   def scrape_phase_movies
