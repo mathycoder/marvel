@@ -1,5 +1,5 @@
 # require_relative './lib/marvel.rb'
-# CLI.new.phase1
+# CLI.new.scrape_phase_movies
 
 class CLI 
   

@@ -40,10 +40,10 @@ class Scraper
       film_array << {
         :film => array[1],
         :date => array[3].split("(")[0],
-        :director => array[5],
-        :screenwriter => array[7],
+        :director => array[5].split("[")[0],
+        :screenwriter => (array[7].split("[")[0] if array[7]!=nil),
         :producer => array[9]
-      }
+      }.compact
     end 
     film_array.shift() 
     film_array
