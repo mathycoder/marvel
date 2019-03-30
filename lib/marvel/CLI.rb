@@ -97,7 +97,12 @@ class CLI
   
   def film_details(film_number)
     movie = Movie.all[film_number-1]
-    puts "-------------#{movie.film}-------------" 
+    puts "-------------#{movie.film} - #{movie.date}-------------"
+    puts ""
+    puts ""
+    puts ""
+    puts ""
+    puts "-------------------------------------------------------"
   end 
   
   def scrape_phase_movies
