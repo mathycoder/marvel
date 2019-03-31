@@ -5,6 +5,7 @@ class CLI
   
   def run 
     scrape_phase_movies
+    add_attributes_to_movies
     logo 
     welcome
     phase_menu 
@@ -114,8 +115,10 @@ class CLI
   end 
   
   def add_attributes_to_movies
-    attributes = Scraper.budget_scraper 
-    
+    attributes = Scraper.new.budget_scraper 
+    Movie.all.each_with_index do |movie, index|
+      movie.add_new_attributes(attributes[index])
+    end 
   end 
   
 end 
