@@ -117,19 +117,12 @@ class CLI
   end 
   
   def add_attributes_to_movies
-    attributes = Scraper.new.box_office_table_scraper 
-    Movie.all.each_with_index do |movie, index|
-      movie.add_new_attributes(attributes[index])
-    end 
+    attributes_array = [Scraper.new.box_office_table_scraper, Scraper.new.plot_scraper, Scraper.new.rotten_tomatoes_scraper]
     
-    attributes = Scraper.new.plot_scraper
-    Movie.all.each_with_index do |movie, index|
-      movie.add_new_attributes(attributes[index])
-    end 
-    
-    rotten_tomatoes_attributes = Scraper.new.rotten_tomatoes_scraper 
-    Movie.all.each_with_index do |movie, index|
-      movie.add_new_attributes(rotten_tomatoes_attributes[index])
+    attributes_array.each do |attributes|
+      Movie.all.each_with_index do |movie, index|
+        movie.add_new_attributes(attributes[index])
+      end 
     end 
   end 
   
