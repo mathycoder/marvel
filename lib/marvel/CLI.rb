@@ -101,10 +101,12 @@ class CLI
     puts "-------------#{film_number}. #{movie.film} - #{movie.date}-------------"
     puts "Directed by: #{movie.director}  Produced by: #{movie.producer}"
     puts "Written by: #{movie.screenwriter}"
+    puts ""
+    puts "US/Canada Box Office: #{movie.us_canada_gross}   Worldwide: #{movie.worldwide_gross}"   
     puts "Budget: #{movie.budget}"
     puts ""
     puts "#{movie.plot}"
-    puts "-----------------------------------------------------------------------"
+    puts "--------------------------------------------------------------------------------"
     puts "Press 'enter' to go back to the menus"
     gets
   end 
@@ -115,7 +117,7 @@ class CLI
   end 
   
   def add_attributes_to_movies
-    attributes = Scraper.new.budget_scraper 
+    attributes = Scraper.new.box_office_table_scraper 
     Movie.all.each_with_index do |movie, index|
       movie.add_new_attributes(attributes[index])
     end 

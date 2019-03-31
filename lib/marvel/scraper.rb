@@ -25,22 +25,18 @@ class Scraper
     plots 
   end 
   
-  def budget_scraper
+  def box_office_table_scraper
     html = open(@path)
     doc = Nokogiri::HTML(html)
-    budgets = [] 
-    
-    doc.css(".wikitable.sortable tr").each_with_index do |budget, index|
-      if index >=2 && index <=22 
-        budgets << budget.css("td")[7].text.split("\n")[0]
-      end 
-    end 
-    
     attributes = [] 
     
     doc.css(".wikitable.sortable tr").each_with_index do |budget, index|
       if index >=2 && index <=22 
-        attributes << {:budget => budget.css("td")[7].text.split("\n")[0]}
+        attributes << {
+          :budget => budget.css("td")[7].text.split("\n")[0],
+          :worldwide_gross =>  budget.css("td")[4].text.split("\n")[0],
+          :us_canada_gross => budget.css("td")[2].text.split("\n")[0]
+        }
       end 
     end 
   attributes
