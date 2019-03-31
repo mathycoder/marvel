@@ -11,10 +11,7 @@ class Scraper
   
   def plot_scraper 
     plots = [] 
-    paragraphs = @doc.css(".mw-parser-output p")
-    paragraphs.shift()
-    paragraphs.shift()
-    paragraphs.each_with_index do |paragraph, index|
+    @doc.css(".mw-parser-output p")[2..].each_with_index do |paragraph, index|
       if index > 0 && index <= 21*3 
         plots << {:plot => paragraph.text.split("[")[0]} if index % 3 == 0 
       end 
@@ -24,7 +21,6 @@ class Scraper
   
   def box_office_table_scraper
     attributes = [] 
-    
     @doc.css(".wikitable.sortable tr").each_with_index do |budget, index|
       if index >=2 && index <=22 
         attributes << {
@@ -40,8 +36,7 @@ class Scraper
   
   def rotten_tomatoes_scraper 
     attributes = [] 
-    rows = @doc.css(".wikitable.sortable")[1].css("tbody tr")
-    rows.each_with_index do |row,index|
+    @doc.css(".wikitable.sortable")[1].css("tbody tr").each_with_index do |row,index|
       if index > 0 && index <= 21  
         attributes << {:rating => row.css("td")[1].text.split(" ")[0]}
       end 
