@@ -1,6 +1,3 @@
-# require_relative './lib/marvel.rb'
-# CLI.new.scrape_phase_movies
-
 class CLI 
   
   def run 
@@ -54,17 +51,12 @@ class CLI
       puts ""
       puts "Select a Phase or type 'exit':"
       input = gets.strip.downcase 
-      case input 
-      when "1" || "phase 1" || "2" || "phase 2" || "3" || "phase 3"
-        phase(1) 
-      when "2" || "phase 2"
-        phase(2)
-      when "3" || "phase 3"
-        phase(3)
-      when "exit"
-        goodbye 
+      if input == "1" || input == "2" || input == "3"
+        phase(input.to_i)
+      elsif input == "exit"
+        goodbye
       else 
-        puts "Please enter a valid Phase"
+        puts "Please enter a valid Phase" 
       end 
     end 
   end 
@@ -88,12 +80,13 @@ class CLI
     end 
     puts " --------------------------------------------"
     puts "Select a film number or type 'back':"
-    input = gets.strip.downcase.to_i 
-    if input != 0 && input >=a+1 && input <=b+1 
-      film_details(input)
-    else 
+    input = gets.strip.downcase
+    if input.to_i != 0 && input.to_i >=a+1 && input.to_i <=b+1 
+      film_details(input.to_i)
+    elsif input != 'back'
       puts "Enter a valid selection!"
     end 
+    puts ""
   end 
   
   def film_details(film_number)

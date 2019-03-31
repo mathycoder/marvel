@@ -73,5 +73,4 @@ class Scraper
     end 
     film_array
   end 
-  
 end 
