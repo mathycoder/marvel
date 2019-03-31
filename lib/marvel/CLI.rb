@@ -103,7 +103,7 @@ class CLI
     puts "Written by: #{movie.screenwriter}"
     puts ""
     puts "US/Canada Box Office: #{movie.us_canada_gross}   Worldwide: #{movie.worldwide_gross}"   
-    puts "Budget: #{movie.budget}"
+    puts "Budget: #{movie.budget}               Rotten Tomatoes: #{movie.rating}"
     puts ""
     puts "#{movie.plot}"
     puts "--------------------------------------------------------------------------------"
@@ -118,9 +118,13 @@ class CLI
   
   def add_attributes_to_movies
     attributes = Scraper.new.box_office_table_scraper 
-    rotten_tomatoes_attributes = Scraper.new.rotten_tomatoes_scraper 
     Movie.all.each_with_index do |movie, index|
       movie.add_new_attributes(attributes[index])
+    end 
+    
+    rotten_tomatoes_attributes = Scraper.new.rotten_tomatoes_scraper 
+    Movie.all.each_with_index do |movie, index|
+      movie.add_new_attributes(rotten_tomatoes_attributes[index])
     end 
   end 
   

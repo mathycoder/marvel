@@ -1,5 +1,5 @@
 class Movie 
-  attr_accessor :film, :date, :director, :screenwriter, :producer, :plot, :budget, :worldwide_gross, :us_canada_gross, :link 
+  attr_accessor :film, :date, :director, :screenwriter, :producer, :plot, :budget, :worldwide_gross, :us_canada_gross, :link, :rating  
   
   @@all = [] 
   
