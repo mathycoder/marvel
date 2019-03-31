@@ -1,9 +1,5 @@
 require 'pry'
 
-# Run this in IRB to test things out 
-# require_relative './lib/marvel.rb'
-# Scraper.new.rotten_tomatoes_scraper 
-
 class Scraper 
   attr_accessor :path 
   
@@ -56,15 +52,20 @@ class Scraper
     attributes
   end 
   
+ 
+  # def scrape_index_page2
+  #   html = open(@path)
+  #   doc = Nokogiri::HTML(html)
+  #   tables = doc.css(".wikitable.plainrowheaders tr")
+  #   binding.pry 
+  # end 
+ 
+ 
   
   def scrape_index_page
     html = open(@path)
     doc = Nokogiri::HTML(html)
-    tables = doc.css(".wikitable.plainrowheaders tbody")
-    table_array = []
-    tables.each do |tbody|
-      table_array << tbody 
-    end 
+    table_array = doc.css(".wikitable.plainrowheaders tbody")
     
     #Each index gets to a different phase's table
 
@@ -106,8 +107,6 @@ class Scraper
         :date => array[3].split("(")[0],
         :director => array[5].split("[")[0],
         :screenwriter => screenwriter,
-        #:screenwriter => (array[7].split("[")[0] if array[7]!=nil),
-        #:producer => array[9],
         :producer => producer,
         :plot => plots[index].split("[")[0],
       }.compact
