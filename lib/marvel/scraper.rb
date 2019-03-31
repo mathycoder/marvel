@@ -29,9 +29,13 @@ class Scraper
     html = open(@path)
     doc = Nokogiri::HTML(html)
     budgets = [] 
-    table = doc.css(".wikitable")
-    #table_rows = doc.css(".wikitable tr")[3].css("td")
-    binding.pry 
+    
+    doc.css(".wikitable.sortable tr").each_with_index do |budget, index|
+      if index >=2 && index <=22 
+        budgets << budget.css("td")[7].text.split("\n")[0]
+      end 
+    end 
+    budgets
   end 
   
   
