@@ -82,15 +82,33 @@ class Scraper
     film_array = []  
     
     plots = plot_scraper
+    
+    producer = nil
+    screenwriter = nil
       
     string_array.each_with_index do |row,index| 
       array = row.split("\n")
+      
+      #attempting to deal with row-span producer values 
+      if array[9] !=nil 
+        producer = array[9] 
+      end 
+      
+      #attempting to deal with col-span screenwriter values 
+      if array[7] !=nil 
+        screenwriter = array[7].split("[")[0]
+      else
+        screenwriter = array[5].split("[")[0]
+      end 
+      
       film_array << {
         :film => array[1],
         :date => array[3].split("(")[0],
         :director => array[5].split("[")[0],
-        :screenwriter => (array[7].split("[")[0] if array[7]!=nil),
-        :producer => array[9],
+        :screenwriter => screenwriter,
+        #:screenwriter => (array[7].split("[")[0] if array[7]!=nil),
+        #:producer => array[9],
+        :producer => producer,
         :plot => plots[index].split("[")[0],
       }.compact
     end 
