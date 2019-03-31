@@ -22,7 +22,7 @@ class Scraper
       plots << paragraph.text if index % 3 == 0  
     end 
     plots.shift() 
-    binding.pry 
+    plots 
   end 
   
   
@@ -50,17 +50,20 @@ class Scraper
     
     film_array = []  
     
+    plots = plot_scraper
       
-    string_array.each do |row| 
+    string_array.each_with_index do |row,index| 
       array = row.split("\n")
       film_array << {
         :film => array[1],
         :date => array[3].split("(")[0],
         :director => array[5].split("[")[0],
         :screenwriter => (array[7].split("[")[0] if array[7]!=nil),
-        :producer => array[9]
+        :producer => array[9],
+        :plot => plots[index].split("[")[0]
       }.compact
     end 
+    binding.pry 
     film_array
   end
   
