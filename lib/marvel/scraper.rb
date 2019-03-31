@@ -43,15 +43,12 @@ class Scraper
     end 
     attributes
   end 
-  
-# require_relative './lib/marvel.rb'
-# Scraper.new.scrape_index_page2
  
-  def scrape_index_page2 
+  def scrape_index_page
     film_array = [] 
     producer = nil 
     @doc.css(".wikitable.plainrowheaders tr").each_with_index do |row, index|
-      if index > 0 && index < 5
+      if !row.text.include?("Film") && index >= 0 && index < 24 
         
         #attempting to deal with row-span producer values 
         if row.css("td")[3] !=nil 
@@ -69,60 +66,12 @@ class Scraper
         :film => row.css("th").text.split("\n")[0],
         :date => row.css("td")[0].text.split("(")[0],
         :director => row.css("td")[1].text.split("[")[0],
-        #:screenwriter => row.css("td")[2].text.split("[")[0],
         :screenwriter => screenwriter,
         :producer => producer
         }
       end 
     end 
-    binding.pry 
     film_array
   end 
   
-  def scrape_index_page
-    table_array = @doc.css(".wikitable.plainrowheaders tbody")
-  
-    #Each index gets to a different phase's table
-
-    string_array = []
-    for i in [0,1,2] do 
-      temp_string_array = [] 
-      table_array[i].css("tr").each do |row|
-        temp_string_array << row.text
-      end 
-      temp_string_array.shift()
-      string_array << temp_string_array
-    end 
-    string_array = string_array.flatten 
-    
-    film_array = []  
-    
-    producer = nil
-    screenwriter = nil
-      
-    string_array.each_with_index do |row,index| 
-      array = row.split("\n")
-      
-      #attempting to deal with row-span producer values 
-      if array[9] !=nil 
-        producer = array[9] 
-      end 
-      
-      #attempting to deal with col-span screenwriter values 
-      if array[7] !=nil 
-        screenwriter = array[7].split("[")[0]
-      else
-        screenwriter = array[5].split("[")[0]
-      end 
-      
-      film_array << {
-        :film => array[1],
-        :date => array[3].split("(")[0],
-        :director => array[5].split("[")[0],
-        :screenwriter => screenwriter,
-        :producer => producer
-      }.compact
-    end 
-    film_array
-  end
 end 
