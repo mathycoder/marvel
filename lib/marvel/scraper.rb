@@ -43,10 +43,23 @@ class Scraper
     end 
     attributes
   end 
+ 
+  def scrape_index_page2 
+    @doc.css(".wikitable.plainrowheaders tr").each_with_index do |row|
+      if index > 0 
+        new_film = row.css("th").text
+        new_date = row.css("td")[0].text
+        new_director = row.css("td")[1].text
+        new_screenwriter = row.css("td")[2].text
+        new_producer = row.css("td")[3].text
+        binding.pry 
+      end 
+    end 
+  end 
   
   def scrape_index_page
     table_array = @doc.css(".wikitable.plainrowheaders tbody")
-    
+  
     #Each index gets to a different phase's table
 
     string_array = []
