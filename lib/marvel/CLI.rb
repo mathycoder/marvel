@@ -97,10 +97,10 @@ class CLI
   
   def film_details(film_number)
     movie = Movie.all[film_number-1]
-    puts "----------------#{film_number}. #{movie.film} - #{movie.date}----------------"
-    puts "Directed by: #{movie.director}"
-    puts "Produced by: #{movie.producer}"
+    puts "-------------#{film_number}. #{movie.film} - #{movie.date}-------------"
+    puts "Directed by: #{movie.director}  Produced by: #{movie.producer}"
     puts "Written by: #{movie.screenwriter}"
+    puts "Budget: #{movie.budget}"
     puts ""
     puts "#{movie.plot}"
     puts "-----------------------------------------------------------------------"

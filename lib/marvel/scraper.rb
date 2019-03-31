@@ -64,6 +64,7 @@ class Scraper
     film_array = []  
     
     plots = plot_scraper
+    budgets = budget_scraper 
       
     string_array.each_with_index do |row,index| 
       array = row.split("\n")
@@ -73,29 +74,10 @@ class Scraper
         :director => array[5].split("[")[0],
         :screenwriter => (array[7].split("[")[0] if array[7]!=nil),
         :producer => array[9],
-        :plot => plots[index].split("[")[0]
+        :plot => plots[index].split("[")[0],
+        :budget => budgets[index]
       }.compact
     end 
     film_array
   end
-  
-    # def scrape_details_page 
-  #   html = open("https://en.wikipedia.org/wiki/Iron_Man_(2008_film)")
-  #   doc = Nokogiri::HTML(html)
-    
-  #   #works for https://en.wikipedia.org/wiki/The_Avengers_(2012_film)
-    
-    
-  #   director = doc.css(".infobox.vevent tbody tr")[2].css("td").text
-  #   producer = doc.css(".infobox.vevent tbody tr")[3].css("td").text
-  #   screenplay = doc.css(".infobox.vevent tbody tr")[4].css("td").text
-  #   story = doc.css(".infobox.vevent tbody tr")[5].css("td").text
-    
-  #   #starring doesn't work for Iron Man 
-  #   starring = doc.css(".infobox.vevent tbody tr")[7].css("td").text
-  #   runtime = doc.css(".infobox.vevent tbody tr")[14].css("td").text
-  #   budget = doc.css(".infobox.vevent tbody tr")[17].css("td").text
-  #   box_office = doc.css(".infobox.vevent tbody tr")[18].css("td").text
-    
-  # end 
 end 
