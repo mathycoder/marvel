@@ -35,10 +35,12 @@ class Scraper
         attributes << {
           :budget => budget.css("td")[7].text.split("\n")[0],
           :worldwide_gross =>  budget.css("td")[4].text.split("\n")[0],
-          :us_canada_gross => budget.css("td")[2].text.split("\n")[0]
+          :us_canada_gross => budget.css("td")[2].text.split("\n")[0],
+          :link => "https://en.wikipedia.org" + budget.css("td")[0].css("a").attribute("href").value.split("#")[0]
         }
       end 
     end 
+    binding.pry
   attributes
   end 
   
