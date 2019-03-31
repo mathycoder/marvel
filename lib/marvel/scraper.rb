@@ -63,7 +63,6 @@ class Scraper
         :plot => plots[index].split("[")[0]
       }.compact
     end 
-    binding.pry 
     film_array
   end
   

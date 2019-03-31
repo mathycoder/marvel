@@ -99,10 +99,13 @@ class CLI
     movie = Movie.all[film_number-1]
     puts "----------------#{film_number}. #{movie.film} - #{movie.date}----------------"
     puts "Directed by: #{movie.director}"
+    puts "Produced by: #{movie.producer}"
+    puts "Written by: #{movie.screenwriter}"
     puts ""
-    puts ""
-    puts ""
+    puts "#{movie.plot}"
     puts "-----------------------------------------------------------------------"
+    puts "Press 'enter' to go back to the menus"
+    gets
   end 
   
   def scrape_phase_movies
