@@ -73,13 +73,13 @@ class CLI
     puts " ------------------ Phase #{num} -----------------"
     
     if num == 1 
-      a,b = 0,4 
+      a,b = 0,5 
     elsif num == 2 
-      a,b = 5,10
+      a,b = 6,11
     elsif num == 3 
-      a,b = 11,19
+      a,b = 12,20
     end 
-      
+    
     Movie.all.each_with_index do |movie, index|
       if index >=a && index <=b 
         puts "#{index + 1}. #{movie.film} - #{movie.date}"
