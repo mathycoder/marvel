@@ -2,7 +2,7 @@ require 'pry'
 
 # Run this in IRB to test things out 
 # require_relative './lib/marvel.rb'
-# Scraper.new.budget_scraper 
+# Scraper.new.rotten_tomatoes_scraper 
 
 class Scraper 
   attr_accessor :path 
@@ -41,6 +41,19 @@ class Scraper
       end 
     end 
   attributes
+  end 
+  
+  def rotten_tomatoes_scraper 
+    html = open(@path)
+    doc = Nokogiri::HTML(html)
+    attributes = [] 
+    rows = doc.css(".wikitable.sortable")[1].css("tbody tr")
+    rows.each_with_index do |row,index|
+      if index > 0 && index <= 21  
+        attributes << {:rating => row.css("td")[1].text.split(" ")[0]}
+      end 
+    end 
+    attributes
   end 
   
   

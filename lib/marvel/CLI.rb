@@ -118,6 +118,7 @@ class CLI
   
   def add_attributes_to_movies
     attributes = Scraper.new.box_office_table_scraper 
+    rotten_tomatoes_attributes = Scraper.new.rotten_tomatoes_scraper 
     Movie.all.each_with_index do |movie, index|
       movie.add_new_attributes(attributes[index])
     end 
