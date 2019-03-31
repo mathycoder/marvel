@@ -43,18 +43,25 @@ class Scraper
     end 
     attributes
   end 
+  
+# require_relative './lib/marvel.rb'
+# Scraper.new.scrape_index_page2
  
   def scrape_index_page2 
-    @doc.css(".wikitable.plainrowheaders tr").each_with_index do |row|
-      if index > 0 
-        new_film = row.css("th").text
-        new_date = row.css("td")[0].text
-        new_director = row.css("td")[1].text
-        new_screenwriter = row.css("td")[2].text
-        new_producer = row.css("td")[3].text
-        binding.pry 
+    film_array = [] 
+    @doc.css(".wikitable.plainrowheaders tr").each_with_index do |row, index|
+      if index > 0 && index < 5
+        film_array << {
+        :film => row.css("th").text.split("\n")[0],
+        :date => row.css("td")[0].text.split("(")[0],
+        :director => row.css("td")[1].text.split("[")[0],
+        :screenwriter => row.css("td")[2].text.split("[")[0],
+        :producer => row.css("td")[3].text.split("\n")[0]
+        }
       end 
     end 
+    binding.pry 
+    film_array
   end 
   
   def scrape_index_page
