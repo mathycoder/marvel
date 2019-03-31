@@ -56,11 +56,11 @@ class Scraper
         screenwriter = row.css("td")[i].text.split("[")[0]
 
         film_array << {
-        :film => row.css("th").text.split("\n")[0],
-        :date => row.css("td")[0].text.split("(")[0],
-        :director => row.css("td")[1].text.split("[")[0],
-        :screenwriter => screenwriter,
-        :producer => producer
+          :film => row.css("th").text.split("\n")[0],
+          :date => row.css("td")[0].text.split("(")[0],
+          :director => row.css("td")[1].text.split("[")[0],
+          :screenwriter => screenwriter,
+          :producer => producer
         }
       end 
     end 
