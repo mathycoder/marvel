@@ -122,6 +122,11 @@ class CLI
       movie.add_new_attributes(attributes[index])
     end 
     
+    attributes = Scraper.new.plot_scraper
+    Movie.all.each_with_index do |movie, index|
+      movie.add_new_attributes(attributes[index])
+    end 
+    
     rotten_tomatoes_attributes = Scraper.new.rotten_tomatoes_scraper 
     Movie.all.each_with_index do |movie, index|
       movie.add_new_attributes(rotten_tomatoes_attributes[index])

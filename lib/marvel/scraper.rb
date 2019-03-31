@@ -12,12 +12,13 @@ class Scraper
     doc = Nokogiri::HTML(html)
     plots = [] 
     paragraphs = doc.css(".mw-parser-output p")
-    paragraphs.shift() 
+    paragraphs.shift()
     paragraphs.shift()
     paragraphs.each_with_index do |paragraph, index|
-      plots << paragraph.text if index % 3 == 0  
+      if index > 0 && index <= 21*3 
+        plots << {:plot => paragraph.text.split("[")[0]} if index % 3 == 0 
+      end 
     end 
-    plots.shift() 
     plots 
   end 
   
@@ -52,16 +53,6 @@ class Scraper
     attributes
   end 
   
- 
-  # def scrape_index_page2
-  #   html = open(@path)
-  #   doc = Nokogiri::HTML(html)
-  #   tables = doc.css(".wikitable.plainrowheaders tr")
-  #   binding.pry 
-  # end 
- 
- 
-  
   def scrape_index_page
     html = open(@path)
     doc = Nokogiri::HTML(html)
@@ -81,8 +72,6 @@ class Scraper
     string_array = string_array.flatten 
     
     film_array = []  
-    
-    plots = plot_scraper
     
     producer = nil
     screenwriter = nil
@@ -107,8 +96,7 @@ class Scraper
         :date => array[3].split("(")[0],
         :director => array[5].split("[")[0],
         :screenwriter => screenwriter,
-        :producer => producer,
-        :plot => plots[index].split("[")[0],
+        :producer => producer
       }.compact
     end 
     film_array
