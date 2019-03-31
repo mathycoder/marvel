@@ -40,7 +40,6 @@ class Scraper
         }
       end 
     end 
-    binding.pry
   attributes
   end 
   
