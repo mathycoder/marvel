@@ -2,7 +2,7 @@ require 'pry'
 
 # Run this in IRB to test things out 
 # require_relative './lib/marvel.rb'
-# Scraper.new.plot_scraper 
+# Scraper.new.budget_scraper 
 
 class Scraper 
   attr_accessor :path 
@@ -23,6 +23,15 @@ class Scraper
     end 
     plots.shift() 
     plots 
+  end 
+  
+  def budget_scraper
+    html = open(@path)
+    doc = Nokogiri::HTML(html)
+    budgets = [] 
+    table = doc.css(".wikitable")
+    #table_rows = doc.css(".wikitable tr")[3].css("td")
+    binding.pry 
   end 
   
   
