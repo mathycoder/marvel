@@ -113,4 +113,9 @@ class CLI
     Movie.new_from_collection(movie_hash)
   end 
   
+  def add_attributes_to_movies
+    attributes = Scraper.budget_scraper 
+    
+  end 
+  
 end 

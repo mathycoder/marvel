@@ -18,5 +18,11 @@ class Movie
     movie_array.each{|attributes|self.new(attributes)}
   end 
   
+  def add_new_attributes(attributes)
+    attributes.each do |key, value|
+      self.send("#{key}=",value)
+    end 
+  end 
+  
   
 end 

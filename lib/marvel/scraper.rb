@@ -35,7 +35,15 @@ class Scraper
         budgets << budget.css("td")[7].text.split("\n")[0]
       end 
     end 
-    budgets
+    
+    attributes = [] 
+    
+    doc.css(".wikitable.sortable tr").each_with_index do |budget, index|
+      if index >=2 && index <=22 
+        attributes << {:budget => budget.css("td")[7].text.split("\n")[0]}
+      end 
+    end 
+  attributes
   end 
   
   
@@ -64,7 +72,6 @@ class Scraper
     film_array = []  
     
     plots = plot_scraper
-    budgets = budget_scraper 
       
     string_array.each_with_index do |row,index| 
       array = row.split("\n")
@@ -75,7 +82,6 @@ class Scraper
         :screenwriter => (array[7].split("[")[0] if array[7]!=nil),
         :producer => array[9],
         :plot => plots[index].split("[")[0],
-        :budget => budgets[index]
       }.compact
     end 
     film_array
