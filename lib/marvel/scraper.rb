@@ -49,14 +49,29 @@ class Scraper
  
   def scrape_index_page2 
     film_array = [] 
+    producer = nil 
     @doc.css(".wikitable.plainrowheaders tr").each_with_index do |row, index|
       if index > 0 && index < 5
+        
+        #attempting to deal with row-span producer values 
+        if row.css("td")[3] !=nil 
+          producer = row.css("td")[3].text.split("\n")[0] 
+        end 
+        
+        #attempting to deal with col-span screenwriter values 
+        if row.css("td")[2] !=nil 
+          screenwriter = row.css("td")[2].text.split("[")[0]
+        else
+          screenwriter = row.css("td")[1].text.split("[")[0]
+        end 
+        
         film_array << {
         :film => row.css("th").text.split("\n")[0],
         :date => row.css("td")[0].text.split("(")[0],
         :director => row.css("td")[1].text.split("[")[0],
-        :screenwriter => row.css("td")[2].text.split("[")[0],
-        :producer => row.css("td")[3].text.split("\n")[0]
+        #:screenwriter => row.css("td")[2].text.split("[")[0],
+        :screenwriter => screenwriter,
+        :producer => producer
         }
       end 
     end 
