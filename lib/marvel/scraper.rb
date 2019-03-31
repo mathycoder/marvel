@@ -2,7 +2,7 @@ require 'pry'
 
 # Run this in IRB to test things out 
 # require_relative './lib/marvel.rb'
-# Scraper.new.scrape_index_page
+# Scraper.new.plot_scraper 
 
 class Scraper 
   attr_accessor :path 
@@ -11,25 +11,41 @@ class Scraper
     @path = path 
   end 
   
-  
-  # require_relative './lib/marvel.rb'
-  # Scraper.new.scrape_details_page 
-  
   def scrape_details_page 
-    html = open("https://en.wikipedia.org/wiki/The_Avengers_(2012_film)")
+    html = open("https://en.wikipedia.org/wiki/Iron_Man_(2008_film)")
     doc = Nokogiri::HTML(html)
+    
+    #works for https://en.wikipedia.org/wiki/The_Avengers_(2012_film)
+    
     
     director = doc.css(".infobox.vevent tbody tr")[2].css("td").text
     producer = doc.css(".infobox.vevent tbody tr")[3].css("td").text
     screenplay = doc.css(".infobox.vevent tbody tr")[4].css("td").text
     story = doc.css(".infobox.vevent tbody tr")[5].css("td").text
+    
+    #starring doesn't work for Iron Man 
     starring = doc.css(".infobox.vevent tbody tr")[7].css("td").text
     runtime = doc.css(".infobox.vevent tbody tr")[14].css("td").text
     budget = doc.css(".infobox.vevent tbody tr")[17].css("td").text
     box_office = doc.css(".infobox.vevent tbody tr")[18].css("td").text
     
+  end 
+  
+  
+  def plot_scraper 
+    html = open(@path)
+    doc = Nokogiri::HTML(html)
+    plots = [] 
+    paragraphs = doc.css(".mw-parser-output p")
+    paragraphs.shift() 
+    paragraphs.shift()
+    paragraphs.each_with_index do |paragraph, index|
+      plots << paragraph.text if index % 3 == 0  
+    end 
+    plots.shift() 
     binding.pry 
   end 
+  
   
   def scrape_index_page
     html = open(@path)
@@ -54,6 +70,7 @@ class Scraper
     string_array = string_array.flatten 
     
     film_array = []  
+    
       
     string_array.each do |row| 
       array = row.split("\n")
