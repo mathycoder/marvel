@@ -34,7 +34,6 @@ class Movie
     end 
   end 
   
-  
   def self.new_from_collection(movie_array)
     movie_array.each{|attributes|self.new(attributes)}
   end 
