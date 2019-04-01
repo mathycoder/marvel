@@ -91,7 +91,7 @@ class CLI
     manage_input(Movie.all, a,b)
   end 
   
-  def manage_input(movie_list, a=0, b=Movie.all.length)
+  def manage_input(movie_list, a=0, b=Movie.all.length-1)
     puts "Select a film number or type 'back':"
     input = gets.strip.downcase
     if input.to_i != 0 && input.to_i >=a+1 && input.to_i <=b+1 
