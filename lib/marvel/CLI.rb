@@ -33,7 +33,6 @@ class CLI
   
   def welcome 
     puts "Welcome to the Marvel Cinematic Universe! (MCU)"
-    puts "" 
   end 
   
   def goodbye 
@@ -43,15 +42,10 @@ class CLI
   def phase_menu 
     input = nil 
     while input != "exit"
-      puts "\n1. Phase 1"
-      puts "2. Phase 2"
-      puts "3. Phase 3"
-      puts "4. Sort by Rating"
-      puts "5. Sort by Worldwide Gross"
-      puts "6. Sort by US/Canada Gross"
+      puts "\n1. Phase 1\n2. Phase 2\n3. Phase 3\n4. Sort by Rating\n5. Sort by Worldwide Gross\n6. Sort by US/Canada Gross"
       puts "\nSelect an option or type 'exit':"
       input = gets.strip.downcase 
-      if input == "1" || input == "2" || input == "3"
+      if [1,2,3].any?{|i| input.to_i == i} #== "1" || input == "2" || input == "3"
         phase(input.to_i)
       elsif input == "4"
       ## could we make this less repetitive? 
@@ -70,7 +64,6 @@ class CLI
   end 
   
   def sort_by(sorted_movies,attribute)
-    puts ""
     puts "\n------------ MCU Films sorted by #{attribute.gsub("_", " ")} ------------"
     sorted_movies.each_with_index do |movie,index|
       puts "#{index+1}. #{movie.film} - #{movie.send(attribute)}"
@@ -85,15 +78,11 @@ class CLI
     elsif input != 'back'
       puts "Enter a valid selection!\n"
     end 
-    #puts ""
     ## repeated code 
   end 
   
-  
-  
   def phase(num) 
-    puts ""
-    puts " ------------------ Phase #{num} -----------------"
+    puts "\n------------------ Phase #{num} -----------------"
     
     if num == 1 
       a,b = 0,5 
@@ -118,7 +107,6 @@ class CLI
     elsif input != 'back'
       puts "Enter a valid selection!"
     end 
-    #puts ""
     ## repeated code 
   end 
   
