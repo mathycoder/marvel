@@ -45,20 +45,19 @@ class CLI
       puts "\n1. Phase 1\n2. Phase 2\n3. Phase 3\n4. Sort by Rating\n5. Sort by Worldwide Gross\n6. Sort by US/Canada Gross"
       puts "\nSelect an option or type 'exit':"
       input = gets.strip.downcase 
-      if [1,2,3].any?{|i| input.to_i == i} #== "1" || input == "2" || input == "3"
+      case input 
+      when "1", "2", "3"
         phase(input.to_i)
-      elsif input == "4"
-      ## could we make this less repetitive? 
-      ## could use the send method to handle it using the string I'm passing in.
+      when "4"
         sort_by(Movie.sort_by_rating, "rating")
-      elsif input == "5"
+      when "5"
         sort_by(Movie.sort_by_worldwide_gross, "worldwide_gross")
-      elsif input == "6"
+      when "6" 
         sort_by(Movie.sort_by_us_canada_gross, "us_canada_gross")
-      elsif input == "exit"
+      when "exit"
         goodbye
       else 
-        puts "Please enter a valid Phase" 
+        puts "Please enter a valid input" 
       end 
     end 
   end 
