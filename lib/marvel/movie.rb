@@ -5,6 +5,8 @@ class Movie
   
   def self.all
     @@all
+    #could expand this to first check if it's empty
+    # @@all or scraper.getallmovies!
   end 
   
   def initialize(attributes)
@@ -24,6 +26,8 @@ class Movie
     end 
   end 
   
+  #we can use send here as well! make one method does all of them!
+  #gsub can be used for the first one 
   def self.sort_by_rating 
     sorted = @@all.sort_by{ |movie| movie.rating }
     sorted = sorted.reverse 

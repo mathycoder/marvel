@@ -3,7 +3,7 @@ class CLI
   def run 
     scrape_phase_movies
     add_attributes_to_movies
-    Movie.sort_by_rating
+    #Movie.sort_by_rating
     logo 
     welcome
     phase_menu 
@@ -51,13 +51,14 @@ class CLI
       puts "3. Phase 3"
       puts "4. Sort by Rating"
       puts "5. Sort by Worldwide Gross"
-      puts "6. Sort by US/Canada Gross"
-      puts ""
+      puts "6. Sort by US/Canada Gross\n"
       puts "Select an option or type 'exit':"
       input = gets.strip.downcase 
       if input == "1" || input == "2" || input == "3"
         phase(input.to_i)
       elsif input == "4"
+      ## could we make this less repetitive? 
+      ## could use the send method to handle it using the string I'm passing in.
         sort_by(Movie.sort_by_rating, "rating")
       elsif input == "5"
         sort_by(Movie.sort_by_worldwide_gross, "worldwide_gross")
@@ -139,6 +140,8 @@ class CLI
     gets
   end 
   
+  
+  ## Both of these methods shouldn't live in CLI 
   def scrape_phase_movies
     movie_hash = Scraper.new.scrape_index_page
     Movie.new_from_collection(movie_hash)
