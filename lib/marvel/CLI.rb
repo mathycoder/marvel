@@ -7,7 +7,7 @@ class CLI
   end 
   
   def logo 
-    logo_string = %q( 
+    puts %q( 
       ──────────────▐█████───────
       ──────▄▄████████████▄──────
       ────▄██▀▀────▐███▐████▄────
@@ -27,8 +27,6 @@ class CLI
       ──────▐██▌─▀█████████▀▀────
       ──────███──────────────────
     ) 
-    puts logo_string 
-
   end 
   
   def welcome 
@@ -42,8 +40,7 @@ class CLI
   def phase_menu 
     input = nil 
     while input != "exit"
-      puts "\n1. Phase 1\n2. Phase 2\n3. Phase 3\n4. Sort by Rating\n5. Sort by Worldwide Gross\n6. Sort by US/Canada Gross"
-      puts "\nSelect an option or type 'exit':"
+      puts "\n1. Phase 1\n2. Phase 2\n3. Phase 3\n4. Sort by Rating\n5. Sort by Worldwide Gross\n6. Sort by US/Canada Gross\n\nSelect an option or type 'exit':"
       input = gets.strip.downcase 
       case input 
       when "1", "2", "3"
