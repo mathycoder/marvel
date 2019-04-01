@@ -51,6 +51,7 @@ class CLI
       puts "3. Phase 3"
       puts "4. Sort by Rating"
       puts "5. Sort by Worldwide Gross"
+      puts "6. Sort by US/Canada Gross"
       puts ""
       puts "Select an option or type 'exit':"
       input = gets.strip.downcase 
@@ -60,6 +61,8 @@ class CLI
         sort_by(Movie.sort_by_rating, "rating")
       elsif input == "5"
         sort_by(Movie.sort_by_worldwide_gross, "worldwide_gross")
+      elsif input == "6"
+        sort_by(Movie.sort_by_us_canada_gross, "us_canada_gross")
       elsif input == "exit"
         goodbye
       else 
@@ -70,7 +73,7 @@ class CLI
   
   def sort_by(sorted_movies,attribute)
     puts ""
-    puts " ----------------------------------------------------------"
+    puts " ------------ MCU Films sorted by #{attribute.gsub("_", " ")} ------------"
     sorted_movies.each_with_index do |movie,index|
       puts "#{index+1}. #{movie.film} - #{movie.send(attribute)}"
     end 
