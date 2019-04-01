@@ -68,16 +68,7 @@ class CLI
       puts "#{index+1}. #{movie.film} - #{movie.send(attribute)}"
     end 
     puts "-----------------------------------------------------------"
-    
-    ## repeated code 
-    puts "Select a film number or type 'back':"
-    input = gets.strip.downcase
-    if input.to_i != 0 && input.to_i <= sorted_movies.length  
-      film_details(sorted_movies[input.to_i-1])
-    elsif input != 'back'
-      puts "Enter a valid selection!\n"
-    end 
-    ## repeated code 
+    manage_input(sorted_movies)
   end 
   
   def phase(num) 
@@ -97,20 +88,21 @@ class CLI
       end 
     end 
     puts " --------------------------------------------"
-    
-    ## repeated code 
+    manage_input(Movie.all, a,b)
+  end 
+  
+  def manage_input(movie_list, a=0, b=Movie.all.length)
     puts "Select a film number or type 'back':"
     input = gets.strip.downcase
     if input.to_i != 0 && input.to_i >=a+1 && input.to_i <=b+1 
-      film_details(Movie.all[input.to_i-1])
+      film_details(movie_list[input.to_i-1])
     elsif input != 'back'
       puts "Enter a valid selection!"
     end 
-    ## repeated code 
   end 
   
   def film_details(movie)
-    puts "----------------#{movie.film} - #{movie.date}-------------"
+    puts "\n----------------#{movie.film} - #{movie.date}-------------"
     puts "Directed by: #{movie.director}  Produced by: #{movie.producer}"
     puts "Written by: #{movie.screenwriter}\n"
     puts "US/Canada Box Office: #{movie.us_canada_gross}   Worldwide: #{movie.worldwide_gross}"   
