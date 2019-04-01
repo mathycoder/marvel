@@ -43,13 +43,13 @@ class CLI
   def phase_menu 
     input = nil 
     while input != "exit"
-      puts "1. Phase 1"
+      puts "\n1. Phase 1"
       puts "2. Phase 2"
       puts "3. Phase 3"
       puts "4. Sort by Rating"
       puts "5. Sort by Worldwide Gross"
-      puts "6. Sort by US/Canada Gross\n"
-      puts "Select an option or type 'exit':"
+      puts "6. Sort by US/Canada Gross"
+      puts "\nSelect an option or type 'exit':"
       input = gets.strip.downcase 
       if input == "1" || input == "2" || input == "3"
         phase(input.to_i)
@@ -71,7 +71,7 @@ class CLI
   
   def sort_by(sorted_movies,attribute)
     puts ""
-    puts " ------------ MCU Films sorted by #{attribute.gsub("_", " ")} ------------"
+    puts "\n------------ MCU Films sorted by #{attribute.gsub("_", " ")} ------------"
     sorted_movies.each_with_index do |movie,index|
       puts "#{index+1}. #{movie.film} - #{movie.send(attribute)}"
     end 
@@ -83,9 +83,9 @@ class CLI
     if input.to_i != 0 && input.to_i <= sorted_movies.length  
       film_details(sorted_movies[input.to_i-1])
     elsif input != 'back'
-      puts "Enter a valid selection!"
+      puts "Enter a valid selection!\n"
     end 
-    puts ""
+    #puts ""
     ## repeated code 
   end 
   
@@ -118,18 +118,16 @@ class CLI
     elsif input != 'back'
       puts "Enter a valid selection!"
     end 
-    puts ""
+    #puts ""
     ## repeated code 
   end 
   
   def film_details(movie)
     puts "----------------#{movie.film} - #{movie.date}-------------"
     puts "Directed by: #{movie.director}  Produced by: #{movie.producer}"
-    puts "Written by: #{movie.screenwriter}"
-    puts ""
+    puts "Written by: #{movie.screenwriter}\n"
     puts "US/Canada Box Office: #{movie.us_canada_gross}   Worldwide: #{movie.worldwide_gross}"   
-    puts "Budget: #{movie.budget}               Rotten Tomatoes: #{movie.rating}"
-    puts ""
+    puts "Budget: #{movie.budget}               Rotten Tomatoes: #{movie.rating}\n"
     puts "#{movie.plot}"
     puts "--------------------------------------------------------------------------------"
     puts "Press 'enter' to go back to the menus"
