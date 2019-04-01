@@ -4,9 +4,11 @@ class Movie
   @@all = [] 
   
   def self.all
-    @@all
-    #could expand this to first check if it's empty
-    # @@all or scraper.getallmovies!
+    if @@all == [] 
+      self.scrape_phase_movies
+      self.add_attributes_to_movies
+    end 
+    @@all 
   end 
   
   def initialize(attributes)
@@ -15,6 +17,23 @@ class Movie
     end 
     @@all << self 
   end 
+  
+    ## Both of these methods shouldn't live in CLI 
+  def self.scrape_phase_movies
+    movie_hash = Scraper.new.scrape_index_page
+    Movie.new_from_collection(movie_hash)
+  end 
+  
+  def self.add_attributes_to_movies
+    attributes_array = [Scraper.new.box_office_table_scraper, Scraper.new.plot_scraper, Scraper.new.rotten_tomatoes_scraper]
+    
+    attributes_array.each do |attributes|
+      Movie.all.each_with_index do |movie, index|
+        movie.add_new_attributes(attributes[index])
+      end 
+    end 
+  end 
+  
   
   def self.new_from_collection(movie_array)
     movie_array.each{|attributes|self.new(attributes)}

@@ -1,9 +1,6 @@
 class CLI 
   
   def run 
-    scrape_phase_movies
-    add_attributes_to_movies
-    #Movie.sort_by_rating
     logo 
     welcome
     phase_menu 
@@ -126,7 +123,6 @@ class CLI
   end 
   
   def film_details(movie)
-    #movie = Movie.all[film_number-1]
     puts "----------------#{movie.film} - #{movie.date}-------------"
     puts "Directed by: #{movie.director}  Produced by: #{movie.producer}"
     puts "Written by: #{movie.screenwriter}"
@@ -139,22 +135,4 @@ class CLI
     puts "Press 'enter' to go back to the menus"
     gets
   end 
-  
-  
-  ## Both of these methods shouldn't live in CLI 
-  def scrape_phase_movies
-    movie_hash = Scraper.new.scrape_index_page
-    Movie.new_from_collection(movie_hash)
-  end 
-  
-  def add_attributes_to_movies
-    attributes_array = [Scraper.new.box_office_table_scraper, Scraper.new.plot_scraper, Scraper.new.rotten_tomatoes_scraper]
-    
-    attributes_array.each do |attributes|
-      Movie.all.each_with_index do |movie, index|
-        movie.add_new_attributes(attributes[index])
-      end 
-    end 
-  end 
-  
 end 
