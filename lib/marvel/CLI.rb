@@ -56,7 +56,7 @@ class CLI
       if input == "1" || input == "2" || input == "3"
         phase(input.to_i)
       elsif input == "4"
-        sort_by_rating 
+        sort_by_rating(Movie.sort_by_rating)
       elsif input == "exit"
         goodbye
       else 
@@ -65,10 +65,10 @@ class CLI
     end 
   end 
   
-  def sort_by_rating
+  def sort_by_rating(sorted_movies)
     puts ""
-    puts " ----------------- Sorted by Tomatometer ------------------"
-    Movie.sort_by_rating.each_with_index do |movie,index|
+    puts " ----------------------------------------------------------"
+    sorted_movies.each_with_index do |movie,index|
       puts "#{index+1}. #{movie.film} - #{movie.rating}"
     end 
     puts "-----------------------------------------------------------"
@@ -76,8 +76,8 @@ class CLI
     ## repeated code 
     puts "Select a film number or type 'back':"
     input = gets.strip.downcase
-    if input.to_i != 0 && input.to_i <= Movie.all.length  
-      film_details(Movie.sort_by_rating[input.to_i-1])
+    if input.to_i != 0 && input.to_i <= sorted_movies.length  
+      film_details(sorted_movies[input.to_i-1])
     elsif input != 'back'
       puts "Enter a valid selection!"
     end 
