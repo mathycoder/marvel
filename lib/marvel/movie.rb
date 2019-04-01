@@ -25,7 +25,12 @@ class Movie
   end 
   
   def self.sort_by_rating 
-    all_by_ratings = @@all.sort_by{ |movie| movie.rating }
+    sorted = @@all.sort_by{ |movie| movie.rating }
+    sorted = sorted.reverse 
+  end 
+  
+  def self.sort_by_worldwide_gross
+    all_by_ratings = @@all.sort_by{ |movie| movie.worldwide_gross.gsub(/\D/,'').to_i }
     all_by_ratings = all_by_ratings.reverse 
   end 
 end 
