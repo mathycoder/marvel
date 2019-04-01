@@ -49,11 +49,11 @@ class CLI
       when "1", "2", "3"
         phase(input.to_i)
       when "4"
-        sort_by(Movie.sort_by_rating, "rating")
+        sort_by(Movie.sort_by("rating"), "rating")
       when "5"
-        sort_by(Movie.sort_by_worldwide_gross, "worldwide_gross")
+        sort_by(Movie.sort_by("worldwide_gross"), "worldwide_gross")
       when "6" 
-        sort_by(Movie.sort_by_us_canada_gross, "us_canada_gross")
+        sort_by(Movie.sort_by("us_canada_gross"), "us_canada_gross")
       when "exit"
         goodbye
       else 
@@ -104,10 +104,10 @@ class CLI
   def film_details(movie)
     puts "\n----------------#{movie.film} - #{movie.date}-------------"
     puts "Directed by: #{movie.director}  Produced by: #{movie.producer}"
-    puts "Written by: #{movie.screenwriter}\n"
-    puts "US/Canada Box Office: #{movie.us_canada_gross}   Worldwide: #{movie.worldwide_gross}"   
+    puts "Written by: #{movie.screenwriter}"
+    puts "\nUS/Canada Box Office: #{movie.us_canada_gross}   Worldwide: #{movie.worldwide_gross}"   
     puts "Budget: #{movie.budget}               Rotten Tomatoes: #{movie.rating}\n"
-    puts "#{movie.plot}"
+    puts "\n#{movie.plot}"
     puts "--------------------------------------------------------------------------------"
     puts "Press 'enter' to go back to the menus"
     gets
