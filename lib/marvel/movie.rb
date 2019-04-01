@@ -24,5 +24,8 @@ class Movie
     end 
   end 
   
-  
+  def self.sort_by_rating 
+    all_by_ratings = @@all.sort_by{ |movie| movie.rating }
+    all_by_ratings = all_by_ratings.reverse 
+  end 
 end 

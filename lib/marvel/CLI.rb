@@ -3,6 +3,7 @@ class CLI
   def run 
     scrape_phase_movies
     add_attributes_to_movies
+    Movie.sort_by_rating
     logo 
     welcome
     phase_menu 
@@ -48,11 +49,14 @@ class CLI
       puts "1. Phase 1"
       puts "2. Phase 2"
       puts "3. Phase 3"
+      puts "4. Sort by Rating"
       puts ""
-      puts "Select a Phase or type 'exit':"
+      puts "Select an option or type 'exit':"
       input = gets.strip.downcase 
       if input == "1" || input == "2" || input == "3"
         phase(input.to_i)
+      elsif input == "4"
+        sort_by_rating 
       elsif input == "exit"
         goodbye
       else 
@@ -60,6 +64,28 @@ class CLI
       end 
     end 
   end 
+  
+  def sort_by_rating
+    puts ""
+    puts " ----------------- Sorted by Tomatometer ------------------"
+    Movie.sort_by_rating.each_with_index do |movie,index|
+      puts "#{index+1}. #{movie.film} - #{movie.rating}"
+    end 
+    puts "-----------------------------------------------------------"
+    
+    ## repeated code 
+    puts "Select a film number or type 'back':"
+    input = gets.strip.downcase
+    if input.to_i != 0 && input.to_i <= Movie.all.length  
+      film_details(Movie.sort_by_rating[input.to_i-1])
+    elsif input != 'back'
+      puts "Enter a valid selection!"
+    end 
+    puts ""
+    ## repeated code 
+  end 
+  
+  
   
   def phase(num) 
     puts ""
@@ -79,19 +105,22 @@ class CLI
       end 
     end 
     puts " --------------------------------------------"
+    
+    ## repeated code 
     puts "Select a film number or type 'back':"
     input = gets.strip.downcase
     if input.to_i != 0 && input.to_i >=a+1 && input.to_i <=b+1 
-      film_details(input.to_i)
+      film_details(Movie.all[input.to_i-1])
     elsif input != 'back'
       puts "Enter a valid selection!"
     end 
     puts ""
+    ## repeated code 
   end 
   
-  def film_details(film_number)
-    movie = Movie.all[film_number-1]
-    puts "-------------#{film_number}. #{movie.film} - #{movie.date}-------------"
+  def film_details(movie)
+    #movie = Movie.all[film_number-1]
+    puts "----------------#{movie.film} - #{movie.date}-------------"
     puts "Directed by: #{movie.director}  Produced by: #{movie.producer}"
     puts "Written by: #{movie.screenwriter}"
     puts ""
