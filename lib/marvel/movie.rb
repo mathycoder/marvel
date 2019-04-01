@@ -48,17 +48,17 @@ class Movie
   #we can use send here as well! make one method does all of them!
   #gsub can be used for the first one 
   def self.sort_by_rating 
-    sorted = @@all.sort_by{ |movie| movie.rating }
+    sorted = self.all.sort_by{ |movie| movie.rating.gsub(/\D/,'').to_i }
     sorted = sorted.reverse 
   end 
   
   def self.sort_by_worldwide_gross
-    sorted = @@all.sort_by{ |movie| movie.worldwide_gross.gsub(/\D/,'').to_i }
+    sorted = self.all.sort_by{ |movie| movie.worldwide_gross.gsub(/\D/,'').to_i }
     sorted = sorted.reverse 
   end 
   
   def self.sort_by_us_canada_gross
-    sorted = @@all.sort_by{ |movie| movie.us_canada_gross.gsub(/\D/,'').to_i }
+    sorted = self.all.sort_by{ |movie| movie.us_canada_gross.gsub(/\D/,'').to_i }
     sorted = sorted.reverse 
   end 
     
