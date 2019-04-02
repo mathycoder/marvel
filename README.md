@@ -1,26 +1,27 @@
 # Marvel
 
-Welcome to my MCU gem!  
-
-Here I am practicing scraping using the wikipedia page:
+Welcome to my MCU gem!  This program scrapes the wikipedia page below and brings back lots of information for each of the current films in the Marvel Cinematic Universe.  It allows you to sort through the films by their Phase, Tomatoscore, and Box Office Gross.  Each film can also be selected for details on its director, screenwriter, producer, and other information.  
 
 https://en.wikipedia.org/wiki/List_of_Marvel_Cinematic_Universe_films
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Clone this repository using 
 
-```ruby
-gem 'marvel'
-```
+  $ git clone git@github.com:mathycoder/marvel.git
 
-And then execute:
+Then go into the directory 
 
-    $ bundle
+  $ cd marvel
 
-Or install it yourself as:
+From there, execute bundle
 
-    $ gem install marvel
+  $ bundle 
+  
+Finally, run the program with 
+
+  $ bin/marvel 
+
 
 ## Usage
 
@@ -28,7 +29,7 @@ TODO: Write usage instructions here
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+After checking out the repo, run `bin/setup` to install dependencies. 
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
