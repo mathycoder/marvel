@@ -64,16 +64,16 @@ class CLI
   end 
   
   def sort_by(sorted_movies,attribute)
-    puts "\n------------ MCU Films sorted by #{attribute.gsub("_", " ")} ------------".blue
+    puts "\n------------ MCU Films sorted by #{attribute.gsub("_", " ")} ------------".red
     sorted_movies.each_with_index do |movie,index|
       puts "#{index+1}. #{movie.film} - #{movie.send(attribute)}"
     end 
-    puts "-----------------------------------------------------------".blue
+    puts "-----------------------------------------------------------".red
     manage_input(sorted_movies)
   end 
   
   def phase(num) 
-    puts "\n------------------ Phase #{num} -----------------".blue
+    puts "\n------------------ Phase #{num} -----------------".red
     
     if num == 1 
       a,b = 0,5 
@@ -88,7 +88,7 @@ class CLI
         puts "#{index + 1}. #{movie.film} - #{movie.date}"
       end 
     end 
-    puts " --------------------------------------------".blue 
+    puts " --------------------------------------------".red 
     manage_input(Movie.all, a,b)
   end 
   
@@ -103,13 +103,13 @@ class CLI
   end 
   
   def film_details(movie)
-    puts "\n----------------#{movie.film} - #{movie.date}-------------".green
+    puts "\n----------------#{movie.film} - #{movie.date}-------------".blue
     puts "Directed by: #{movie.director}  Produced by: #{movie.producer}"
     puts "Written by: #{movie.screenwriter}"
     puts "\nUS/Canada Box Office: #{movie.us_canada_gross}   Worldwide: #{movie.worldwide_gross}"   
     puts "Budget: #{movie.budget}               Rotten Tomatoes: #{movie.rating}\n"
     puts "\n#{movie.plot}"
-    puts "--------------------------------------------------------------------------------".green
+    puts "--------------------------------------------------------------------------------".blue
     puts "Press 'enter' to go back to the menus"
     gets
   end 
