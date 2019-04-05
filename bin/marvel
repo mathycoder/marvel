@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 require_relative '../lib/marvel'
 
-Marvel_MCU::CLI.new.run 
+Marvel::CLI.new.run 
