@@ -1,6 +1,6 @@
 require 'pry'
 
-class Scraper 
+class Marvel_MCU::Scraper 
   attr_accessor :path, :doc 
   
   def initialize(path="https://en.wikipedia.org/wiki/List_of_Marvel_Cinematic_Universe_films")

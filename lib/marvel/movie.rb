@@ -1,4 +1,4 @@
-class Movie 
+class Marvel_MCU::Movie 
   attr_accessor :film, :date, :director, :screenwriter, :producer, :plot, :budget, :worldwide_gross, :us_canada_gross, :rating, :link   
   
   @@all = [] 
@@ -20,15 +20,15 @@ class Movie
   
     ## Both of these methods shouldn't live in CLI 
   def self.scrape_phase_movies
-    movie_hash = Scraper.new.scrape_index_page
-    Movie.new_from_collection(movie_hash)
+    movie_hash = Marvel_MCU::Scraper.new.scrape_index_page
+    self.new_from_collection(movie_hash)
   end 
   
   def self.add_attributes_to_movies
-    attributes_array = [Scraper.new.box_office_table_scraper, Scraper.new.plot_scraper, Scraper.new.rotten_tomatoes_scraper]
+    attributes_array = [Marvel_MCU::Scraper.new.box_office_table_scraper, Marvel_MCU::Scraper.new.plot_scraper, Marvel_MCU::Scraper.new.rotten_tomatoes_scraper]
     
     attributes_array.each do |attributes|
-      Movie.all.each_with_index do |movie, index|
+      self.all.each_with_index do |movie, index|
         movie.add_new_attributes(attributes[index])
       end 
     end 

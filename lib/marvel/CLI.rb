@@ -1,4 +1,4 @@
-class CLI 
+class Marvel_MCU::CLI 
   
   def run 
     welcome
@@ -50,11 +50,11 @@ class CLI
       when "1", "2", "3"
         phase(input.to_i)
       when "4"
-        sort_by(Movie.sort_by("rating"), "rating")
+        sort_by(Marvel_MCU::Movie.sort_by("rating"), "rating")
       when "5"
-        sort_by(Movie.sort_by("worldwide_gross"), "worldwide_gross")
+        sort_by(Marvel_MCU::Movie.sort_by("worldwide_gross"), "worldwide_gross")
       when "6" 
-        sort_by(Movie.sort_by("us_canada_gross"), "us_canada_gross")
+        sort_by(Marvel_MCU::Movie.sort_by("us_canada_gross"), "us_canada_gross")
       when "exit"
         goodbye
       else 
@@ -83,16 +83,16 @@ class CLI
       a,b = 12,20
     end 
     
-    Movie.all.each_with_index do |movie, index|
+    Marvel_MCU::Movie.all.each_with_index do |movie, index|
       if index >=a && index <=b 
         puts "#{index + 1}. #{movie.film} - #{movie.date}"
       end 
     end 
     puts " --------------------------------------------".red 
-    manage_input(Movie.all, a,b)
+    manage_input(Marvel_MCU::Movie.all, a,b)
   end 
   
-  def manage_input(movie_list, a=0, b=Movie.all.length-1)
+  def manage_input(movie_list, a=0, b=Marvel_MCU::Movie.all.length-1)
     puts "Select a film number or type 'back':"
     input = gets.strip.downcase
     if input.to_i != 0 && input.to_i >=a+1 && input.to_i <=b+1 
