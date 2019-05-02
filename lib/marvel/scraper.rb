@@ -1,58 +1,58 @@
 require 'pry'
 
-class Marvel::Scraper 
-  attr_accessor :path, :doc 
-  
+class Marvel::Scraper
+  attr_accessor :path, :doc
+
   def initialize(path="https://en.wikipedia.org/wiki/List_of_Marvel_Cinematic_Universe_films")
-    @path = path 
+    @path = path
     html = open(@path)
     @doc = Nokogiri::HTML(html)
-  end 
-  
-  def plot_scraper 
-    plots = [] 
+  end
+
+  def plot_scraper
+    plots = []
     @doc.css(".mw-parser-output p")[2..].each_with_index do |paragraph, index|
-      if index > 0 && index <= 21*3 
-        plots << {:plot => paragraph.text.split("[")[0]} if index % 3 == 0 
-      end 
-    end 
-    plots 
-  end 
-  
+      if index > 0 && index <= 22*3
+        plots << {:plot => paragraph.text.split("[")[0]} if index % 3 == 0
+      end
+    end
+    plots
+  end
+
   def box_office_table_scraper
-    attributes = [] 
+    attributes = []
     @doc.css(".wikitable.sortable tr").each_with_index do |budget, index|
-      if index >=2 && index <=22 
+      if index >=2 && index <=23
         attributes << {
           :budget => budget.css("td")[7].text.split("\n")[0],
           :worldwide_gross =>  budget.css("td")[4].text.split("\n")[0],
           :us_canada_gross => budget.css("td")[2].text.split("\n")[0],
           :link => "https://en.wikipedia.org" + budget.css("td")[0].css("a").attribute("href").value.split("#")[0]
         }
-      end 
-    end 
+      end
+    end
   attributes
-  end 
-  
-  def rotten_tomatoes_scraper 
-    attributes = [] 
+  end
+
+  def rotten_tomatoes_scraper
+    attributes = []
     @doc.css(".wikitable.sortable")[1].css("tbody tr").each_with_index do |row,index|
-      if index > 0 && index <= 21  
+      if index > 0 && index <= 22
         attributes << {:rating => row.css("td")[1].text.split(" ")[0]}
-      end 
-    end 
+      end
+    end
     attributes
-  end 
- 
+  end
+
   def scrape_index_page
-    film_array = [] 
-    producer = nil 
+    film_array = []
+    producer = nil
     @doc.css(".wikitable.plainrowheaders tr").each_with_index do |row, index|
-      if !row.text.include?("Film") && index >= 0 && index < 24 
-        
-        #fixes row- and col-span inconsistencies 
-        producer = row.css("td")[3].text.split("\n")[0] if row.css("td")[3] !=nil 
-        row.css("td")[2] !=nil ? i = 2 : i = 1 
+      if !row.text.include?("Film") && index >= 0 && index < 25
+
+        #fixes row- and col-span inconsistencies
+        producer = row.css("td")[3].text.split("\n")[0] if row.css("td")[3] !=nil
+        row.css("td")[2] !=nil ? i = 2 : i = 1
         screenwriter = row.css("td")[i].text.split("[")[0]
 
         film_array << {
@@ -62,8 +62,8 @@ class Marvel::Scraper
           :screenwriter => screenwriter,
           :producer => producer
         }
-      end 
-    end 
+      end
+    end
     film_array
-  end 
-end 
+  end
+end
