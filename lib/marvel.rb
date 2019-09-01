@@ -1,4 +1,4 @@
-#This is the gem's environment file 
+#This is the gem's environment file
 
 require 'bundler/setup'
 Bundler.require(:default)
@@ -10,5 +10,3 @@ require_relative "marvel/version"
 require_relative "marvel/scraper"
 require_relative "marvel/CLI"
 require_relative "marvel/movie"
-
-

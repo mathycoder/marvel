@@ -21,13 +21,13 @@ class Marvel::Scraper
 
   def box_office_table_scraper
     attributes = []
-    @doc.css(".wikitable.sortable tr").each_with_index do |budget, index|
-      if index >=2 && index <=23
+    @doc.css(".wikitable.plainrowheaders.sortable tr").each_with_index do |budget, index|
+      if index >=3 && index <=27 && index !=9 && index !=16
         attributes << {
-          :budget => budget.css("td")[7].text.split("\n")[0],
-          :worldwide_gross =>  budget.css("td")[4].text.split("\n")[0],
-          :us_canada_gross => budget.css("td")[2].text.split("\n")[0],
-          :link => "https://en.wikipedia.org" + budget.css("td")[0].css("a").attribute("href").value.split("#")[0]
+          :budget => budget.css("td")[6].text.split("\n")[0],
+          :worldwide_gross =>  budget.css("td")[3].text.split("\n")[0],
+          :us_canada_gross => budget.css("td")[1].text.split("\n")[0],
+          :link => "https://en.wikipedia.org" + budget.css("th")[0].css("a").attribute("href").value.split("#")[0]
         }
       end
     end
@@ -37,8 +37,8 @@ class Marvel::Scraper
   def rotten_tomatoes_scraper
     attributes = []
     @doc.css(".wikitable.sortable")[1].css("tbody tr").each_with_index do |row,index|
-      if index > 0 && index <= 22
-        attributes << {:rating => row.css("td")[1].text.split(" ")[0]}
+      if index > 2 && index!=9 && index!=16 && index <= 27
+        attributes << {:rating => row.css("td")[0].text.split(" ")[0]}
       end
     end
     attributes
